@@ -1,0 +1,48 @@
+<div class="registerContainer">
+     <!-- Alertas -->
+     <div class="position-fixed end-0 top-0 m-3" style="z-index: 1000;">
+        <!-- Alerta de registro exitoso -->
+        <div *ngIf="registroExitoso" class="alert alert-success" role="alert">
+            <i class="ri-checkbox-circle-fill ri-lg"></i> ¡Registro exitoso! Tu cuenta ha sido creada. Ya puedes <a routerLink="/login/inicio" class="alert-link">Iniciar sesion</a>
+        </div>
+        <!-- Alerta de datos faltantes -->
+        <div *ngIf="faltaDatos" class="alert alert-warning" role="alert">
+            <i class="ri-alert-fill ri-lg"></i> ¡Faltan datos por llenar! Por favor completa todos los campos.
+        </div>
+         <!-- Alerta de correo electrónico inválido -->
+        <div *ngIf="correoInvalido" class="alert alert-danger" role="alert">
+            <i class="ri-error-warning-fill ri-lg"></i> ¡El formato del correo electrónico es incorrecto! Por favor ingresa un correo válido.
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-8">
+                <div class="card" style="margin-top: 2%;">                
+                    <h3 class="text-center">Crea tu cuenta</h3>
+                   
+                    <form action="" method="post" (submit)="onSubmit(f)" #f="ngForm">
+                        <div class="mb-3">
+                            <label for="usuario" class="form-label"><i class="ri-user-fill ri-lg"></i>Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" required ngModel>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label"><i class="ri-mail-add-fill ri-lg"></i>Correo</label>
+                            <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" required ngModel>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contrasena" class="form-label"><i class="ri-lock-fill ri-lg"></i>Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" required ngModel>
+                        </div>
+                    
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-success" type="submit">Crear cuenta <i class="ri-check-fill ri-lg"></i></button>
+                            <a href="/" class="btn btn-outline-dark"><strong>Ir al inicio </strong><i class="ri-home-2-fill"></i></a>
+                        </div>
+                        <p class="text-center mt-2">¿ya tienes cuenta? <br> <strong><a href="/login/inicio" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">iniciar sesion</a></strong></p>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div><br>
+</div>
