@@ -30,4 +30,23 @@ export class UsuariosService {
 }
 
 
+  // Método para verificar las credenciales de inicio de sesión
+  iniciarSesion(correo: string, contrasena: string): boolean {
+    try {
+      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+      const usuarioEncontrado = usuarios.find((usuario: any) => usuario.correo === correo && usuario.contrasena === contrasena);
+      return usuarioEncontrado ? true : false;
+      
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  usuarioExiste(correo: string): boolean {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    return usuarios.some((usuario: any) => usuario.correo === correo);
+  }
+
+
 }

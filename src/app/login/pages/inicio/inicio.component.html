@@ -1,18 +1,37 @@
-
+<div class="AlertContainer">
+    <!-- Alertas -->
+    <div class="position-fixed end-0 top-0 m-3" style="z-index: 1000;">
+        <!-- Alerta de usuario no encontrado -->
+        <div *ngIf="usuarioNoEncontrado" class="alert alert-danger" role="alert">
+            <i class="ri-error-warning-fill ri-lg"></i> ¡El usuario no existe! Por favor verifica tus datos. o puedes <a routerLink="/login/registro" class="alert-link">crear cuenta</a>
+        </div>
+       <!-- Alerta de datos faltantes -->
+       <div *ngIf="faltaDatos" class="alert alert-warning" role="alert">
+           <i class="ri-alert-fill ri-lg"></i> ¡Faltan datos por llenar! Por favor completa todos los campos.
+       </div>
+        <!-- Alerta de correo electrónico inválido -->
+       <div *ngIf="correoInvalido" class="alert alert-danger" role="alert">
+           <i class="ri-error-warning-fill ri-lg"></i> ¡El formato del correo electrónico es incorrecto! Por favor ingresa un correo válido.
+       </div>
+        <!-- Alerta de contraseña incorrecta -->
+    <div *ngIf="contrasenaIncorrecta" class="alert alert-danger" role="alert">
+        <i class="ri-error-warning-fill ri-lg"></i> ¡La contraseña ingresada es incorrecta! Por favor, inténtalo de nuevo.
+    </div>
+   </div>
 <div class="loginCointainer">
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
             <div class="col-md-8">
                 <div class="card" style="margin-top: 2%;">                
                     <h3 class="text-center">Iniciar sesión</h3>
-                    <form action="" method="POST">
+                    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
                         <div class="mb-3">
-                            <label for="correo" class="form-label"><i class="ri-user-fill ri-lg"></i>Usuario</label>
-                            <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" required>
+                            <label for="correo" class="form-label"><i class="ri-mail-fill ri-lg"></i>Correo</label>
+                            <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" required ngModel>
                         </div>
                         <div class="mb-3">
                             <label for="contrasena" class="form-label"><i class="ri-lock-fill ri-lg"></i>Contraseña</label>
-                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" required ngModel>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button class="btn btn-success" type="submit"><strong>Entrar </strong><i class="ri-arrow-right-fill ri-lg"></i></button>
