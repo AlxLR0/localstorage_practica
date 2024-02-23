@@ -43,9 +43,12 @@ export class InicioComponent {
       const inicioSesionExitoso = this.usuariosService.iniciarSesion(correo, contrasena);
 
       if (inicioSesionExitoso) {
+         // Almacenar el correo electrónico en localStorage y despues recperar el nombre de usuario y mostrarlos en el dashboard
+         localStorage.setItem('correoUsuario', correo);
+        //para redirigir a otro componente cuando el usuario haga login
         this.router.navigate(['/dashboard']);
       } else {
-        this.contrasenaIncorrecta = true; // Establece la variable para mostrar la alerta de contraseña incorrecta
+        this.contrasenaIncorrecta = true; //variable para mostrar la alerta de contraseña incorrecta
         setTimeout(() => {
           this.contrasenaIncorrecta = false; // Oculta la alerta después de un tiempo
         }, 3000);

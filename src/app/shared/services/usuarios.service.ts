@@ -48,5 +48,11 @@ export class UsuariosService {
     return usuarios.some((usuario: any) => usuario.correo === correo);
   }
 
+  obtenerNombreUsuario(correo: string): string | undefined {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuario = usuarios.find((usuario: any) => usuario.correo === correo);
+    return usuario ? usuario.usuario : undefined;
+  }
+
 
 }
